@@ -34,6 +34,6 @@ public interface CatagoryService {
 	 * @throws AppServiceException wrapper exception for service errors
 	 * @throws ResourceException wrapper exception for resource errors
 	 */
-	public List<Recipe> getByCatagory(String category) throws ResourceException, AppServiceException;
+	public List<Recipe> getByCatagory(Long categoryId) throws ResourceException, AppServiceException;
 	
 }

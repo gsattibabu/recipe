@@ -1,6 +1,7 @@
 package com.myapp.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +42,13 @@ public class CatagoryServiceImpl implements CatagoryService{
 	}
 
 	@Override
-	public List<Recipe> getByCatagory(String cat) throws ResourceException, AppServiceException {
+	public List<Recipe> getByCatagory(Long catId) throws ResourceException, AppServiceException {
 		try {
-			Category category = categoryDao.findByDescription(cat);
-			if(null == category) {
+			Optional<Category> category = categoryDao.findById(catId);
+			if(!category.isPresent()) {
 				throw new ResourceException("Validation Error","Category does not exist");
 			}
-			return category.getRecipes();
+			return category.get().getRecipes();
 		}catch(HibernateException e) {
 			throw new AppServiceException("Unexpected Error","Error while fecthing recipe details");
 		}

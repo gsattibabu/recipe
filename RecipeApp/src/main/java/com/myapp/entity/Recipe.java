@@ -49,7 +49,7 @@ public class Recipe implements AppEntity{
 	
 	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name= "RECIPE_TITLE")
-	private Set<Ingredient> ingrediants;
+	private Set<IngredientDiv> ingrediants;
 	
 	@OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name= "RECIPE_TITLE")
@@ -82,11 +82,11 @@ public class Recipe implements AppEntity{
 		return catagories;
 	}
 
-	public Set<Ingredient> getIngrediants() {
+	public Set<IngredientDiv> getIngrediants() {
 		return ingrediants;
 	}
 
-	public void setIngrediants(Set<Ingredient> ingrediants) {
+	public void setIngrediants(Set<IngredientDiv> ingrediants) {
 		this.ingrediants = ingrediants;
 	}
 

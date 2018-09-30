@@ -27,10 +27,6 @@ public class Ingredient implements AppEntity{
 	@Column(name="ID")
 	private Long id;
 	
-	@Column(name="RECIPE_TITLE")
-	@NotNull
-	private String recipeTitle;
-	
 	@Column(name="ITEM")
 	@NotNull
 	private String item;
@@ -43,10 +39,10 @@ public class Ingredient implements AppEntity{
 	@NotNull
 	private String unit;
 	
-	public void setRecipeTitle(String recipeTitle) {
-		this.recipeTitle = recipeTitle;
-	}
-
+	@Column(name="DIV_ID")
+	@NotNull
+	private Long divId;
+	
 	public String getItem() {
 		return item;
 	}
@@ -69,5 +65,9 @@ public class Ingredient implements AppEntity{
 
 	public void setUnit(String unit) {
 		this.unit = unit;
+	}
+
+	public void setDivId(Long divId) {
+		this.divId = divId;
 	}
 }

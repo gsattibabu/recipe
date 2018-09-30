@@ -66,13 +66,13 @@ public class CategoryManagerController {
 	 * @throws ResourceException
 	 * @throws NumberFormatException
 	 */
-	@RequestMapping(value = "categories/{description}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
+	@RequestMapping(value = "categories/{catId}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public List<Recipe> findByCategory(@PathVariable String description) throws AppServiceException,ResourceException{
+	public List<Recipe> findByCategory(@PathVariable Long catId) throws AppServiceException,ResourceException{
 		
 		try {
-			return catagoryService.getByCatagory(description);
+			return catagoryService.getByCatagory(catId);
 		} catch (NumberFormatException | ResourceException | AppServiceException ex) {
 			throw ex;
 		}

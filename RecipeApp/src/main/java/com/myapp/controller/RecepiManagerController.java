@@ -49,7 +49,7 @@ public class RecepiManagerController {
 	 * @throws AppServiceException
 	 * @throws ResourceException
 	 */
-	@RequestMapping(value = "recipe/{title}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
+	@RequestMapping(value = "recipes/{title}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
 	public Recipe findByName(@PathVariable String title) throws AppServiceException,ResourceException{
@@ -69,7 +69,7 @@ public class RecepiManagerController {
 	 * @return
 	 * @throws AppServiceException
 	 */
-	@RequestMapping(value = "recipe", method = RequestMethod.POST, headers = "Accept=application/json", produces = {
+	@RequestMapping(value = "recipes", method = RequestMethod.POST, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
 	public Recipe createNewRecipe(@Valid @RequestBody Recipe recipe) throws AppServiceException {
@@ -89,7 +89,7 @@ public class RecepiManagerController {
 	 * @throws ResourceException
 	 * @throws AppServiceException
 	 */
-	@RequestMapping(value = "recipe", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
+	@RequestMapping(value = "recipes", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
 	public List<Recipe> findAllRecipes() throws ResourceException, AppServiceException {

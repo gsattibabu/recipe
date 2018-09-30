@@ -44,5 +44,21 @@ public class CategoryMap implements AppEntity{
 	public Category getCategory() {
 		return catagories;
 	}
+
+	public Recipe getRecipes() {
+		return recipes;
+	}
+
+	public void setRecipes(Recipe recipes) {
+		this.recipes = recipes;
+	}
+
+	public Category getCatagories() {
+		return catagories;
+	}
+
+	public void setCatagories(Category catagories) {
+		this.catagories = catagories;
+	}
 	
 }

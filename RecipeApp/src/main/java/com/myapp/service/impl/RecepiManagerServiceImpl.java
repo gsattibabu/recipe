@@ -13,9 +13,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.myapp.dao.IngredientDao;
+import com.myapp.dao.IngredientDivDao;
 import com.myapp.dao.RecipeDao;
+import com.myapp.dao.RecipeStepDao;
 import com.myapp.entity.Category;
+import com.myapp.entity.Ingredient;
+import com.myapp.entity.IngredientDiv;
 import com.myapp.entity.Recipe;
+import com.myapp.entity.RecipeStep;
 import com.myapp.exception.handler.AppServiceException;
 import com.myapp.exception.handler.ResourceException;
 import com.myapp.service.RecipeManagerService;
@@ -33,6 +39,15 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 	
 	@Autowired
 	private RecipeDao recepiDao;
+	
+	@Autowired
+	private IngredientDao ingredientDao;
+	
+	@Autowired
+	private IngredientDivDao ingredientDivDao;
+	
+	@Autowired
+	private RecipeStepDao recipeStepDao;
 	
 	@Autowired
 	private RecipeManagerUtil recipeManagerUtil;
@@ -74,9 +89,16 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 			for(Category categorie : categories) {
 				validatedCategories.add(recipeManagerUtil.validateCategory(categorie.getDescription()));
 			}
-			
-			recipe.getCatagories().clear();
-			recipe.setCatagories(validatedCategories);
+			/*recipe.getCatagories().clear();
+			recipe.setCatagories(validatedCategories);*/
+			Set<RecipeStep> steps = recipe.getDirections();
+			for(RecipeStep step : steps) {
+				step.setRecipeTitle(recipe.getRecipeTitle());
+			}
+			Set<IngredientDiv> divs = recipe.getIngrediants();
+			for(IngredientDiv div : divs) {
+				div.setRecipeTitle(recipe.getRecipeTitle());
+			}
 			return recepiDao.save(recipe);
 		}catch(HibernateException e) {
 			throw new AppServiceException("Unexpected Error","Error while saving recipe");

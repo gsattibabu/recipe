@@ -1,12 +1,15 @@
 <dataset>
 	<RECIPE RECIPE_TITLE="30 Minute Chili" RECIPE_YIELD="6" />
 	<RECIPE RECIPE_TITLE="Amaretto Cake" RECIPE_YIELD="1" />
+	<RECIPE RECIPE_TITLE="Another Zucchini Dish" RECIPE_YIELD="6" />
 
 	<RECIPE_CATEGORY CATOGORY_ID="1" DESCRIPTION="Main dish" />
 	<RECIPE_CATEGORY CATOGORY_ID="2" DESCRIPTION="Chili" />
 	<RECIPE_CATEGORY CATOGORY_ID="3" DESCRIPTION="Cakes" />
 	<RECIPE_CATEGORY CATOGORY_ID="4" DESCRIPTION="Liquor" />
 	<RECIPE_CATEGORY CATOGORY_ID="5" DESCRIPTION="Cake mixes" />
+	<RECIPE_CATEGORY CATOGORY_ID="6" DESCRIPTION="Microwave" />
+	<RECIPE_CATEGORY CATOGORY_ID="7" DESCRIPTION="Vegetables" />
 
 	<RECIPE_CATEGORY_MAP ID="1" RECIPE_TITLE="30 Minute Chili"
 		CATOGORY_ID="1" />
@@ -18,42 +21,76 @@
 		CATOGORY_ID="4" />
 	<RECIPE_CATEGORY_MAP ID="5" RECIPE_TITLE="Amaretto Cake"
 		CATOGORY_ID="5" />
-
+	<RECIPE_CATEGORY_MAP ID="6" RECIPE_TITLE="Another Zucchini Dish"
+		CATOGORY_ID="6" />
+	<RECIPE_CATEGORY_MAP ID="7" RECIPE_TITLE="Another Zucchini Dish"
+		CATOGORY_ID="7" />
+		
+	<RECIPE_INGREDITANT_DIV DIV_ID="1"
+		TITLE="" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT_DIV DIV_ID="2"
+		TITLE="" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT_DIV DIV_ID="3"
+		TITLE="GLAZE" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT_DIV DIV_ID="4"
+		TITLE="" RECIPE_TITLE="Another Zucchini Dish" />
+		
 	<RECIPE_INGREDITANT ID="1"
 		ITEM="Ground chuck or lean ground; beef" INGGREDIANT_QANTITY="1"
-		INGGREDIANT_UNIT="pound" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_UNIT="pound" DIV_ID="1" />
 	<RECIPE_INGREDITANT ID="2" ITEM="Onion; large, chopped"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" DIV_ID="1" />
 	<RECIPE_INGREDITANT ID="3" ITEM="Kidney beans; (12 oz)"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" DIV_ID="1" />
 	<RECIPE_INGREDITANT ID="4" ITEM="Tomato soup; undiluted"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" DIV_ID="1" />
 	<RECIPE_INGREDITANT ID="5" ITEM="Salt"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="teaspoon" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="teaspoon" DIV_ID="1" />
 	<RECIPE_INGREDITANT ID="6" ITEM="Chili powder; (or to taste)"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="tablespoon" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="tablespoon" DIV_ID="1" />
 	<RECIPE_INGREDITANT ID="7" ITEM="Hot pepper sauce; to taste"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="30 Minute Chili" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" DIV_ID="1" />
 
 	<RECIPE_INGREDITANT ID="8" ITEM="Toasted Almonds; chopped"
-		INGGREDIANT_QANTITY="1 1/2" INGGREDIANT_UNIT="cups" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="1 1/2" INGGREDIANT_UNIT="cups" DIV_ID="2" />
 	<RECIPE_INGREDITANT ID="9" ITEM="Yellow cake mix; no pudding"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="package" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="package" DIV_ID="2" />
 	<RECIPE_INGREDITANT ID="10" ITEM="Vanilla instant pudding"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="package" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="package" DIV_ID="2" />
 	<RECIPE_INGREDITANT ID="11" ITEM="Eggs"
-		INGGREDIANT_QANTITY="4" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="4" INGGREDIANT_UNIT="" DIV_ID="2" />
 	<RECIPE_INGREDITANT ID="12" ITEM="Vegetable oil"
-		INGGREDIANT_QANTITY="1/2" INGGREDIANT_UNIT="cups" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="1/2" INGGREDIANT_UNIT="cups" DIV_ID="2" />
 	<RECIPE_INGREDITANT ID="13" ITEM="Water"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="cups" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="cups" DIV_ID="2" />
 	<RECIPE_INGREDITANT ID="14" ITEM="Amaretto"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
-	<RECIPE_INGREDITANT ID="15" ITEM="Water"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
-	<RECIPE_INGREDITANT ID="16" ITEM="Amaretto"
-		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
+		INGGREDIANT_QANTITY="1/2" INGGREDIANT_UNIT="cups" DIV_ID="2" />
+	<RECIPE_INGREDITANT ID="15" ITEM="Almond extract"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="teaspoon" DIV_ID="2" />
+	<RECIPE_INGREDITANT ID="16" ITEM="Sugar"
+		INGGREDIANT_QANTITY="1/2" INGGREDIANT_UNIT="cups" DIV_ID="3" />
+	<RECIPE_INGREDITANT ID="17" ITEM="Water"
+		INGGREDIANT_QANTITY="1/4" INGGREDIANT_UNIT="cups" DIV_ID="3" />
+	<RECIPE_INGREDITANT ID="18" ITEM="Butter"
+		INGGREDIANT_QANTITY="2" INGGREDIANT_UNIT="tablespoons" DIV_ID="3" />
+	<RECIPE_INGREDITANT ID="19" ITEM="Amaretto"
+		INGGREDIANT_QANTITY="1/4" INGGREDIANT_UNIT="cups" DIV_ID="3" />
+	<RECIPE_INGREDITANT ID="20" ITEM="Almond extract"
+		INGGREDIANT_QANTITY="1/2" INGGREDIANT_UNIT="teaspoons" DIV_ID="3" />
 
+	<RECIPE_INGREDITANT ID="21" ITEM="Zucchini; cubed 1/2&quot;"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="pound" DIV_ID="4" />
+	<RECIPE_INGREDITANT ID="22" ITEM="Butter or margarine"
+		INGGREDIANT_QANTITY="3" INGGREDIANT_UNIT="tablespoons" DIV_ID="4" />
+	<RECIPE_INGREDITANT ID="23" ITEM="Eggs; beaten"
+		INGGREDIANT_QANTITY="3" INGGREDIANT_UNIT="" DIV_ID="4" />
+	<RECIPE_INGREDITANT ID="24" ITEM="Jar pimentos; 2 1/2 oz, diced"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" DIV_ID="4" />
+	<RECIPE_INGREDITANT ID="25" ITEM="Cheddar cheese; shredded"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="cup" DIV_ID="4" />
+	<RECIPE_INGREDITANT ID="26" ITEM="French fried onion rings 3 oz."
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" DIV_ID="4" />
+		
 	<RECIPE_STEP ID="1"
 		STEP_DETAILS="Brown the meat in a little butter and cook until the meat is brown -- about
   10 minutes. Add all other ingredients and let simmer for 30 minutes. Your
@@ -87,5 +124,19 @@
   
   From: Cheryl Gimenez &lt;clgimenez@earthlink.net&gt;"
 		RECIPE_TITLE="Amaretto Cake" />
+		
+		<RECIPE_STEP ID="3"
+		STEP_DETAILS="Place zucchini and butter in a 2 quart casserole. Cover with plastic wrap.
+  Microwave at high (100%) until tender crisp, 4 to 5 minutes. Stir in egg,
+  pimentos and cheese. Blend well. Cover with plastic wrap. Microwave at
+  medium (50%) until eggs are set, 10 toll minutes. Sprinkle onion rings on
+  top. Microwave at medium (50%) until onion rings are heated, 2 to 2 1/2
+  minutes. Makes 6 servings.
+  
+  Recipe by: diane@keyway.net
+  
+  Posted to recipelu-digest Volume 01 Number 217 by 'Diane Geary'
+  &lt;diane@keyway.net&gt; on Nov 7, 1997"
+		RECIPE_TITLE="Another Zucchini Dish" />
 
 </dataset>
