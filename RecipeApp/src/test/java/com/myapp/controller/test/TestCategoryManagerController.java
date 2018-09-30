@@ -1,8 +1,6 @@
 package com.myapp.controller.test;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
@@ -65,7 +63,7 @@ public class TestCategoryManagerController {
 	}
 
 	@Test
-	public void getRecipesByTitle_success() throws Exception {
+	public void getRecipesByTitle_failure() throws Exception {
 
 		Category category = new Category();
 		category.setDescription("test description");
@@ -81,6 +79,6 @@ public class TestCategoryManagerController {
 		categoryMap.setRecipes(recipe);
 		entityManager.persistAndFlush(categoryMap);
 		
-		mvc.perform(get("/categories/test description").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		mvc.perform(get("/categories/test description").contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError());
 	}
 }
