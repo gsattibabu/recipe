@@ -10,7 +10,7 @@ Pre-requieites to run the app
 Below are the steps to be followed to get the API's up and running.
 
 1.	Clone the source code from git in local directory (for example : C:\users)
-$ git clone https://github.com/mbyregow/RecipeApp.git
+$ git clone https://github.com/mbyregow/recipeApp.git
 
 2.	Move to the root directory of the RecipeApp project (C:\users\RecipeApp) and build the source code using maven command
 $ mvn clean install
