@@ -1,0 +1,91 @@
+<dataset>
+	<RECIPE RECIPE_TITLE="30 Minute Chili" RECIPE_YIELD="6" />
+	<RECIPE RECIPE_TITLE="Amaretto Cake" RECIPE_YIELD="1" />
+
+	<RECIPE_CATEGORY CATOGORY_ID="1" DESCRIPTION="Main dish" />
+	<RECIPE_CATEGORY CATOGORY_ID="2" DESCRIPTION="Chili" />
+	<RECIPE_CATEGORY CATOGORY_ID="3" DESCRIPTION="Cakes" />
+	<RECIPE_CATEGORY CATOGORY_ID="4" DESCRIPTION="Liquor" />
+	<RECIPE_CATEGORY CATOGORY_ID="5" DESCRIPTION="Cake mixes" />
+
+	<RECIPE_CATEGORY_MAP ID="1" RECIPE_TITLE="30 Minute Chili"
+		CATOGORY_ID="1" />
+	<RECIPE_CATEGORY_MAP ID="2" RECIPE_TITLE="30 Minute Chili"
+		CATOGORY_ID="2" />
+	<RECIPE_CATEGORY_MAP ID="3" RECIPE_TITLE="Amaretto Cake"
+		CATOGORY_ID="3" />
+	<RECIPE_CATEGORY_MAP ID="4" RECIPE_TITLE="Amaretto Cake"
+		CATOGORY_ID="4" />
+	<RECIPE_CATEGORY_MAP ID="5" RECIPE_TITLE="Amaretto Cake"
+		CATOGORY_ID="5" />
+
+	<RECIPE_INGREDITANT ID="1"
+		ITEM="Ground chuck or lean ground; beef" INGGREDIANT_QANTITY="1"
+		INGGREDIANT_UNIT="pound" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT ID="2" ITEM="Onion; large, chopped"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT ID="3" ITEM="Kidney beans; (12 oz)"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT ID="4" ITEM="Tomato soup; undiluted"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="can" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT ID="5" ITEM="Salt"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="teaspoon" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT ID="6" ITEM="Chili powder; (or to taste)"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="tablespoon" RECIPE_TITLE="30 Minute Chili" />
+	<RECIPE_INGREDITANT ID="7" ITEM="Hot pepper sauce; to taste"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="30 Minute Chili" />
+
+	<RECIPE_INGREDITANT ID="8" ITEM="Toasted Almonds; chopped"
+		INGGREDIANT_QANTITY="1 1/2" INGGREDIANT_UNIT="cups" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="9" ITEM="Yellow cake mix; no pudding"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="package" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="10" ITEM="Vanilla instant pudding"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="package" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="11" ITEM="Eggs"
+		INGGREDIANT_QANTITY="4" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="12" ITEM="Vegetable oil"
+		INGGREDIANT_QANTITY="1/2" INGGREDIANT_UNIT="cups" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="13" ITEM="Water"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="cups" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="14" ITEM="Amaretto"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="15" ITEM="Water"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
+	<RECIPE_INGREDITANT ID="16" ITEM="Amaretto"
+		INGGREDIANT_QANTITY="1" INGGREDIANT_UNIT="" RECIPE_TITLE="Amaretto Cake" />
+
+	<RECIPE_STEP ID="1"
+		STEP_DETAILS="Brown the meat in a little butter and cook until the meat is brown -- about
+  10 minutes. Add all other ingredients and let simmer for 30 minutes. Your
+  choice of hot sauce may be added to taste.
+  
+  Recipe by: MasterCook Archives
+  
+  Posted to recipelu-digest Volume 01 Number 577 by Rodeo46898
+  &lt;Rodeo46898@aol.com&gt; on Jan 22, 1998"
+		RECIPE_TITLE="30 Minute Chili" />
+
+	<RECIPE_STEP ID="2"
+		STEP_DETAILS="Sprinkle 1 cup almonds into bottom of a well-greased       and floured 10&quot;
+  tube pan; set aside. Combine cake mix,     pudding mix, eggs, oil, water,
+  amaretto, and almond        extract in a mixing bowl; beat on low speed of
+  an
+         electric mixer til dry ingredients are moistened.          Increase
+  speed to medium, and beat 4 minutes. Stir in      remaining 1/2 cup
+  almonds. Pour batter into prepared       tube pan. Bake at 325~ for 1 hour
+  or til a wooden pick inserted in center comes out clean. Cool cake in pan
+    10-15 minutes; remove from pan, and cool completely.       Combine sugar,
+  water, and butter in a small saucepan;      bring to a boil. Reduce heat to
+  medium and gently boil     4-5 minutes, stirring occasionally, until sugar
+  dissolves. Remove from heat, and cool 15 minutes. Stir
+  in amaretto and almond extract. Punch holes in top of      cake with a
+  wooden pick; slowly spoon glaze on top of cake, allowing glaze to absorb in
+  cake.
+  Posted to MC-Recipe Digest V1 #263
+  
+  Date: Sun, 27 Oct 1996 20:04:57 +0000
+  
+  From: Cheryl Gimenez &lt;clgimenez@earthlink.net&gt;"
+		RECIPE_TITLE="Amaretto Cake" />
+
+</dataset>
