@@ -1,7 +1,7 @@
 Introduction :
 
 The application provides RESTfull API to retrive Food Recipe based on category, title or all the recipe at one shot.
-Other than that retrieving App also provides API to save a new recipe.
+Additional to retrieving recipe, app also provides API to save a new recipe.
 
 Pre-requieites to run the app
 - apache maven 3 or higher
