@@ -14,6 +14,7 @@ import com.myapp.entity.CategoryMap;
 import com.myapp.entity.Recipe;
 
 /**
+ * Test case common configuration
  * @author Madhsudan
  *
  */
@@ -37,6 +38,14 @@ public class TestConfig {
 		}
 	}
 
+	/**
+	 * Test case util method to persist recipe, category
+	 * 
+	 * @param title
+	 * @param yield
+	 * @param categoryDescrip
+	 * @return created recipe
+	 */
 	public Recipe persistRecipe(String title, String yield, String categoryDescrip) {
 
 		Category category = new Category();

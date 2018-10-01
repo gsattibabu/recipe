@@ -3,6 +3,7 @@
  */
 package com.myapp.service.util;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.hibernate.HibernateException;
@@ -49,25 +50,31 @@ public class RecipeManagerUtil {
 	
 	/**
 	 * This method is used to validate the categories and return new or existing category
-	 * @param description category description
+	 * @param categorie category description
 	 * @param newRecipe 
 	 * @param string 
 	 * @return newly created category or existing category
 	 * @throws AppServiceException
 	 */
-	public void validateCategory(String description, Recipe newRecipe) throws AppServiceException {
+	public void validateCategory(Category categorie, Recipe newRecipe) throws AppServiceException {
 		
 		try {
-			Category category = categoryDao.findByDescription(description);
-			if(null == category) {
+			Optional<Category> category = categoryDao.findById(categorie.getCatogoryId());
+			if(!category.isPresent()) {
 				Category newCategory = new Category();
-				newCategory.setDescription(description);
+				newCategory.setDescription(categorie.getDescription());
 				categoryDao.save(newCategory);
+				CategoryMap categoryMap = new CategoryMap();
+				categoryMap.setCatagories(newCategory);
+				categoryMap.setRecipes(newRecipe);
+				categoryMapDao.save(categoryMap);
+			}else {
+				CategoryMap categoryMap = new CategoryMap();
+				categoryMap.setCatagories(categorie);
+				categoryMap.setRecipes(newRecipe);
+				categoryMapDao.save(categoryMap);
 			}
-			CategoryMap categoryMap = new CategoryMap();
-			categoryMap.setCatagories(category);
-			categoryMap.setRecipes(newRecipe);
-			categoryMapDao.save(categoryMap);
+			
 			
 		} catch (HibernateException e) {
 			throw new AppServiceException("Unexpected Error","Error while validating category");
@@ -89,9 +96,13 @@ public class RecipeManagerUtil {
 			newIngredientDiv.setTitle(null!=ingrediantsDiv.getTitle()?ingrediantsDiv.getTitle():"");
 			ingredientDivDao.save(newIngredientDiv);
 			Set<Ingredient> ingrediants = ingrediantsDiv.getIngrediant();
-			for(Ingredient ingredient:ingrediants) {
-				ingredient.setIngredientDiv(newIngredientDiv);
-				ingredientDao.save(ingredient);
+			if(null!=ingrediants) {
+				for(Ingredient ingredient:ingrediants) {
+					ingredient.setIngredientDiv(newIngredientDiv);
+					ingredientDao.save(ingredient);
+				}
+			}else {
+				throw new ResourceException("Input recipe validation failed","Recipe Ingreditants cannot be empty");
 			}
 			
 		} catch (HibernateException e) {

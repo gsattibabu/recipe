@@ -76,17 +76,30 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 			Recipe newRecipe = saveRecipe(recipe);
 			if(null!=newRecipe) {
 				Set<Category> categories = recipe.getCatagories();
-				for(Category categorie : categories) {
-					recipeManagerUtil.validateCategory(categorie.getDescription(), newRecipe);
+				if(null!=categories && !categories.isEmpty()) {
+					for(Category categorie : categories) {
+						recipeManagerUtil.validateCategory(categorie, newRecipe);
+					}
+				}else {
+					throw new ResourceException("Input recipe validation failed","Recipe category cannot be empty");
 				}
 				Set<RecipeStep> steps = recipe.getDirections();
-				for(RecipeStep step : steps) {
-					recipeManagerUtil.validateSteps(step, newRecipe);
+				if(null!=steps) {
+					for(RecipeStep step : steps) {
+						recipeManagerUtil.validateSteps(step, newRecipe);
+					}
+				}else {
+					throw new ResourceException("Input recipe validation failed","Recipe Steps cannot be empty");
 				}
 				Set<IngredientDiv> divs = recipe.getIngrediants();
-				for(IngredientDiv div : divs) {
-					recipeManagerUtil.validateIngreditants(div, newRecipe);
+				if(null!=divs) {
+					for(IngredientDiv div : divs) {
+						recipeManagerUtil.validateIngreditants(div, newRecipe);
+					}
+				}else {
+					throw new ResourceException("Input recipe validation failed","Recipe Ingreditants cannot be empty");
 				}
+				
 			}
 			return newRecipe;
 		}catch(HibernateException ex) {
