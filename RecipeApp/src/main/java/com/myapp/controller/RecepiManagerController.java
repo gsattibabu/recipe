@@ -44,8 +44,8 @@ public class RecepiManagerController {
 	/**
 	 * This Rest controller is used to retrieve recipe based on title
 	 * 
-	 * @param title
-	 * @return
+	 * @param title of the recipe
+	 * @return Recipe matching title
 	 * @throws AppServiceException
 	 * @throws ResourceException
 	 */
@@ -56,7 +56,7 @@ public class RecepiManagerController {
 		
 		try {
 			return recepiManagerService.getByName(title);
-		} catch (NumberFormatException | ResourceException | AppServiceException ex) {
+		} catch (ResourceException | AppServiceException ex) {
 			throw ex;
 		}
 		

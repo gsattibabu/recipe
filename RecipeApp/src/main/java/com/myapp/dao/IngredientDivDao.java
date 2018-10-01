@@ -8,7 +8,7 @@ import com.myapp.entity.IngredientDiv;
 /**
  * 
  * This class provide default implementation of the basic CURD operations provided by CrudRepository. 
- * Also it contains all the blue print of business methods for Category entity
+ * Also it contains all the blue print of business methods for IngredientDiv entity
  * @author Madhusudan
  *
  */

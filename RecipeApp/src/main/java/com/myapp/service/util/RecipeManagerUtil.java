@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.hibernate.HibernateException;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +25,7 @@ import com.myapp.exception.handler.AppServiceException;
 import com.myapp.exception.handler.ResourceException;
 
 /**
- * Util class to validate the recipe
+ * Util class to validate and add necessary entity while new recipe creation
  * @author Madhusudan
  * @version : 1.0.0
  */

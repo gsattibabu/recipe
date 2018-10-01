@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- * Entity class to represent the Ingredients table
+ * Entity class to represent the Ingredient division table
  * 
  * @author Madhusudan
  *

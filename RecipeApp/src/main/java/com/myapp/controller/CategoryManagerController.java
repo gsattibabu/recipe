@@ -37,9 +37,9 @@ public class CategoryManagerController {
 	private CatagoryService catagoryService;
 	
 	/**
-	 * This Rest controller is used to fetch all the clients in the application
+	 * This Rest controller is used to fetch all the categories in the application
 	 * 
-	 * @return list of clients if exist or No data found exception
+	 * @return list of categories if exist or No data found exception
 	 * @throws ResourceException
 	 * @throws AppServiceException
 	 */
@@ -57,14 +57,13 @@ public class CategoryManagerController {
 	}
 	
 	/**
-	 * This method is use to get the client details by providing the client ID
+	 * This method is use to get the recipes by providing the category ID
 	 * 
-	 * @param clientId
-	 * @return the client details if found else will return Resource not found
+	 * @param category ID
+	 * @return the recipes if found else will return Resource not found
 	 *         exception
 	 * @throws AppServiceException
 	 * @throws ResourceException
-	 * @throws NumberFormatException
 	 */
 	@RequestMapping(value = "categories/{catId}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })

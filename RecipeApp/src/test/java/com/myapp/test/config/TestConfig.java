@@ -55,6 +55,7 @@ public class TestConfig {
 		Recipe recipe = new Recipe();
 		recipe.setRecipeTitle(title);
 		recipe.setRecipeYield(yield);
+		recipe.setCookingTime("test");
 		entityManager.persistAndFlush(recipe);
 
 		CategoryMap categoryMap = new CategoryMap();

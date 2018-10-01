@@ -72,7 +72,7 @@ public class TestRecipeManagerController extends TestConfig {
 	@Test
 	public void createRecipes_success() throws Exception {
 
-		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"catagories\": [{\"catogoryId\": 1,\"description\": \"Main dish\"}],\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
+		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"cookingTime\": \"test\",\"catagories\": [{\"catogoryId\": 1,\"description\": \"Main dish\"}],\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
 
 		mvc.perform(post("/recipes").contentType(MediaType.APPLICATION_JSON).content(createRecipeRequest))
 				.andExpect(status().isOk());
@@ -86,7 +86,7 @@ public class TestRecipeManagerController extends TestConfig {
 	@Test
 	public void createRecipesNoCategory_failure() throws Exception {
 
-		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
+		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"cookingTime\": \"test\",\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
 
 		mvc.perform(post("/recipes").contentType(MediaType.APPLICATION_JSON).content(createRecipeRequest))
 				.andExpect(status().is4xxClientError())
@@ -101,7 +101,7 @@ public class TestRecipeManagerController extends TestConfig {
 	@Test
 	public void createRecipesNoIngediant_failure() throws Exception {
 
-		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"catagories\": [{\"catogoryId\": 1,\"description\": \"Main dish\"}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
+		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"cookingTime\": \"test\",\"catagories\": [{\"catogoryId\": 1,\"description\": \"Main dish\"}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
 
 		mvc.perform(post("/recipes").contentType(MediaType.APPLICATION_JSON).content(createRecipeRequest))
 				.andExpect(status().is4xxClientError())
@@ -116,7 +116,7 @@ public class TestRecipeManagerController extends TestConfig {
 	@Test
 	public void createRecipesNoSteps_failure() throws Exception {
 
-		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}]}";
+		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"2\",\"cookingTime\": \"test\",\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}]}";
 
 		mvc.perform(post("/recipes").contentType(MediaType.APPLICATION_JSON).content(createRecipeRequest))
 				.andExpect(status().is4xxClientError())

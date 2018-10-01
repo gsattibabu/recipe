@@ -24,5 +24,5 @@ public interface RecipeDao extends CrudRepository<Recipe, Long>  {
 	 * @throws HibernateException data access layer exception
 	 * 
 	 */
-	public Recipe findByRecipeTitle(String recipeTitle) throws HibernateException;
+	public Recipe findByRecipeTitle(String recipeTitle);
 }

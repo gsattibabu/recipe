@@ -25,7 +25,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  * Application Exception Handler
  * 
  * @author Madhsuudan
- * @version : 1.0.0
  *
  */
 @ControllerAdvice(basePackages = { "com.myapp.controller" })
@@ -43,7 +42,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * This method is used to throw any unexpected error within application
+	 * This method is used to return error on any generic exception.
 	 * 
 	 * @param exception
 	 *            the resorce exception object
@@ -59,7 +58,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * This method is used to throw the generic exception when resource in not found
+	 * This method is used to return error on generic exception when resource in not found
 	 * 
 	 * @param exception
 	 *            resouces not found exception
@@ -75,7 +74,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * This method is used to throw any unexpected error within application
+	 * This method is used to return error on application exceptions
 	 * 
 	 * @param exception
 	 *            the aap exception object
@@ -92,10 +91,10 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * This method is used to throw any unexpected error within application
+	 * This method is used to throw proper error on Data Integrity Violation Exception
 	 * 
 	 * @param exception
-	 *            the hibernate exception object
+	 *            the Data Integrity Violation Exception object
 	 * @param request
 	 *            servlet request object
 	 * @return the error detail
