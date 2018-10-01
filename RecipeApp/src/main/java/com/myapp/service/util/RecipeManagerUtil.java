@@ -22,7 +22,6 @@ import com.myapp.entity.IngredientDiv;
 import com.myapp.entity.Recipe;
 import com.myapp.entity.RecipeStep;
 import com.myapp.exception.handler.AppServiceException;
-import com.myapp.exception.handler.ResourceException;
 
 /**
  * Util class to validate and add necessary entity while new recipe creation
@@ -88,7 +87,7 @@ public class RecipeManagerUtil {
 	 * @throws AppServiceException
 	 * @throws ResourceException 
 	 */
-	public void validateIngreditants(IngredientDiv ingrediantsDiv, Recipe newRecipe) throws ResourceException {
+	public void validateIngreditants(IngredientDiv ingrediantsDiv, Recipe newRecipe) throws AppServiceException {
 		try {
 			IngredientDiv newIngredientDiv = new IngredientDiv();
 			newIngredientDiv.setRecipe(newRecipe);
@@ -101,11 +100,11 @@ public class RecipeManagerUtil {
 					ingredientDao.save(ingredient);
 				}
 			}else {
-				throw new ResourceException("Input recipe validation failed","Recipe Ingreditants cannot be empty");
+				throw new AppServiceException("Input recipe validation failed","Recipe Ingreditants cannot be empty");
 			}
 			
 		} catch (HibernateException e) {
-			throw new ResourceException("Unexpected Error",e.getMessage());
+			throw new AppServiceException("Unexpected Error",e.getMessage());
 		}
 		
 	}

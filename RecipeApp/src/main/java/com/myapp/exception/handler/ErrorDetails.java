@@ -2,6 +2,12 @@ package com.myapp.exception.handler;
 
 import java.util.Date;
 
+/**
+ * This class represents the error object returned on any api exception
+ * 
+ * @author Madhusudan
+ *
+ */
 public class ErrorDetails{
 	
 	private Date timestamp;

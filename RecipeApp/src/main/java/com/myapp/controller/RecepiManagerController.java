@@ -19,14 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.myapp.entity.Recipe;
 import com.myapp.exception.handler.AppServiceException;
-import com.myapp.exception.handler.ResourceException;
 import com.myapp.service.RecipeManagerService;
 
 /**
  * Rest controller for handling all the operations related to Recipe
  * 
  * @author Madhusudan
- * @version : 1.0.0
  * 
  *REST URLS:
  *
@@ -47,16 +45,15 @@ public class RecepiManagerController {
 	 * @param title of the recipe
 	 * @return Recipe matching title
 	 * @throws AppServiceException
-	 * @throws ResourceException
 	 */
 	@RequestMapping(value = "recipes/{title}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public Recipe findByName(@PathVariable String title) throws AppServiceException,ResourceException{
+	public Recipe findByName(@PathVariable String title) throws AppServiceException{
 		
 		try {
 			return recepiManagerService.getByName(title);
-		} catch (ResourceException | AppServiceException ex) {
+		} catch (AppServiceException ex) {
 			throw ex;
 		}
 		
@@ -66,17 +63,17 @@ public class RecepiManagerController {
 	 * This Rest controller is used to create new recipe
 	 * 
 	 * @param recipe
-	 * @return
-	 * @throws Exception 
+	 * @return Recipe newly created
+	 * @throws AppServiceException 
 	 */
 	@RequestMapping(value = "recipes", method = RequestMethod.POST, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public Recipe createNewRecipe(@Valid @RequestBody Recipe recipe) throws ResourceException, AppServiceException {
+	public Recipe createNewRecipe(@Valid @RequestBody Recipe recipe) throws AppServiceException {
 		
 		try {
 			return recepiManagerService.createNewRecepi(recipe);
-		} catch (AppServiceException | ResourceException ex) {
+		} catch (AppServiceException ex) {
 			throw ex;
 		}
 		
@@ -86,17 +83,16 @@ public class RecepiManagerController {
 	 * This Rest controller is used to fetch all the recipe
 	 * 
 	 * @return list of recipes if exist or No data found exception
-	 * @throws ResourceException
 	 * @throws AppServiceException
 	 */
 	@RequestMapping(value = "recipes", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public List<Recipe> findAllRecipes() throws ResourceException, AppServiceException {
+	public List<Recipe> findAllRecipes() throws AppServiceException {
 
 		try {
 			return recepiManagerService.findAllRecipe();
-		} catch (AppServiceException | ResourceException ex) {
+		} catch (AppServiceException  ex) {
 			throw ex;
 		}
 

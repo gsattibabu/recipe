@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.HibernateException;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,7 +19,6 @@ import com.myapp.entity.IngredientDiv;
 import com.myapp.entity.Recipe;
 import com.myapp.entity.RecipeStep;
 import com.myapp.exception.handler.AppServiceException;
-import com.myapp.exception.handler.ResourceException;
 import com.myapp.service.RecipeManagerService;
 import com.myapp.service.util.RecipeManagerUtil;
 
@@ -41,11 +39,11 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 	private RecipeManagerUtil recipeManagerUtil;
 	
 	@Override
-	public List<Recipe> findAllRecipe() throws AppServiceException, ResourceException {
+	public List<Recipe> findAllRecipe() throws AppServiceException {
 		try {
 			List<Recipe> recipes = (List<Recipe>) recepiDao.findAll();
 			if(null == recipes || recipes.isEmpty()) {
-				throw new ResourceException("Validation Error","No Recipes found");
+				throw new AppServiceException("Validation Error","No Recipes found");
 			}
 			return recipes;
 		}catch(HibernateException e) {
@@ -54,12 +52,12 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 	}
 
 	@Override
-	public Recipe getByName(String title) throws ResourceException, AppServiceException {
+	public Recipe getByName(String title) throws AppServiceException {
 
 		try {
 			Recipe recipe = recepiDao.findByRecipeTitle(title);
 			if(null == recipe) {
-				throw new ResourceException("Validation Error","Recipe does not exist");
+				throw new AppServiceException("Validation Error","Recipe does not exist");
 			}
 			return recipe;
 		}catch(HibernateException e) {
@@ -70,7 +68,7 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = AppServiceException.class)
-	public Recipe createNewRecepi(Recipe recipe) throws AppServiceException, ResourceException {
+	public Recipe createNewRecepi(Recipe recipe) throws AppServiceException {
 		try {
 			
 			Recipe newRecipe = saveRecipe(recipe);
@@ -81,7 +79,7 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 						recipeManagerUtil.validateCategory(categorie, newRecipe);
 					}
 				}else {
-					throw new ResourceException("Input recipe validation failed","Recipe category cannot be empty");
+					throw new AppServiceException("Input recipe validation failed","Recipe category cannot be empty");
 				}
 				Set<RecipeStep> steps = recipe.getDirections();
 				if(null!=steps) {
@@ -89,7 +87,7 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 						recipeManagerUtil.validateSteps(step, newRecipe);
 					}
 				}else {
-					throw new ResourceException("Input recipe validation failed","Recipe Steps cannot be empty");
+					throw new AppServiceException("Input recipe validation failed","Recipe Steps cannot be empty");
 				}
 				Set<IngredientDiv> divs = recipe.getIngrediants();
 				if(null!=divs) {
@@ -97,19 +95,19 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 						recipeManagerUtil.validateIngreditants(div, newRecipe);
 					}
 				}else {
-					throw new ResourceException("Input recipe validation failed","Recipe Ingreditants cannot be empty");
+					throw new AppServiceException("Input recipe validation failed","Recipe Ingreditants cannot be empty");
 				}
 				
 			}
 			return newRecipe;
 		}catch(HibernateException ex) {
 			throw new AppServiceException("Unexpected Error", ex.getCause().getMessage());
-		}catch (ResourceException ex) {
+		}catch (AppServiceException ex) {
 			throw ex;
 		}
 	}
 
-	private Recipe saveRecipe(Recipe recipe) throws ResourceException {
+	private Recipe saveRecipe(Recipe recipe) throws AppServiceException {
 		try {
 			Recipe newRecipe = new Recipe();
 			
@@ -119,7 +117,7 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 			
 			return recepiDao.save(newRecipe);
 		}catch(HibernateException e) {
-			throw new ResourceException("Unexpected Error",e.getCause().getMessage());
+			throw new AppServiceException("Unexpected Error",e.getCause().getMessage());
 		}
 	}
 }

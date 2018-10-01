@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.myapp.entity.Category;
 import com.myapp.entity.Recipe;
 import com.myapp.exception.handler.AppServiceException;
-import com.myapp.exception.handler.ResourceException;
 import com.myapp.service.CatagoryService;
 
 /**
@@ -40,17 +39,16 @@ public class CategoryManagerController {
 	 * This Rest controller is used to fetch all the categories in the application
 	 * 
 	 * @return list of categories if exist or No data found exception
-	 * @throws ResourceException
 	 * @throws AppServiceException
 	 */
 	@RequestMapping(value = "categories", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public List<Category> findAllCategories() throws ResourceException, AppServiceException {
+	public List<Category> findAllCategories() throws AppServiceException {
 
 		try {
 			return catagoryService.getAllCatogory();
-		} catch (AppServiceException | ResourceException ex) {
+		} catch (AppServiceException ex) {
 			throw ex;
 		}
 
@@ -63,16 +61,15 @@ public class CategoryManagerController {
 	 * @return the recipes if found else will return Resource not found
 	 *         exception
 	 * @throws AppServiceException
-	 * @throws ResourceException
 	 */
 	@RequestMapping(value = "categories/{catId}", method = RequestMethod.GET, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public List<Recipe> findByCategory(@PathVariable Long catId) throws AppServiceException,ResourceException{
+	public List<Recipe> findByCategory(@PathVariable Long catId) throws AppServiceException {
 		
 		try {
 			return catagoryService.getByCatagory(catId);
-		} catch (NumberFormatException | ResourceException | AppServiceException ex) {
+		} catch (AppServiceException ex) {
 			throw ex;
 		}
 	}

@@ -58,22 +58,6 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * This method is used to return error on generic exception when resource in not found
-	 * 
-	 * @param exception
-	 *            resouces not found exception
-	 * @param request
-	 *            servlet request object
-	 * @return the error detail
-	 */
-	@ExceptionHandler(ResourceException.class)
-	public ResponseEntity<ErrorDetails> handleResourceException(final ResourceException exception,
-			final HttpServletRequest request) {
-		return new ResponseEntity<>(new ErrorDetails(new Date(), exception.getErrorType(), exception.getMessage()),
-				HttpStatus.NOT_FOUND);
-	}
-
-	/**
 	 * This method is used to return error on application exceptions
 	 * 
 	 * @param exception
