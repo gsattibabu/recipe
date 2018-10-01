@@ -42,6 +42,11 @@ public class Recipe implements AppEntity{
 	@Size(min=1, message="Recipe yield cannot be empty")
 	private String recipeYield;
 	
+	@Column(name="COOKING_TIME")
+	@NotNull
+	@Size(min=1, message="Recipe cooking time cannot be empty")
+	private String cookingTime;
+	
 	@ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
         name = "RECIPE_CATEGORY_MAP", 
@@ -72,6 +77,14 @@ public class Recipe implements AppEntity{
 
 	public void setRecipeYield(String recipeYield) {
 		this.recipeYield = recipeYield;
+	}
+
+	public String getCookingTime() {
+		return cookingTime;
+	}
+
+	public void setCookingTime(String cookingTime) {
+		this.cookingTime = cookingTime;
 	}
 
 	public void setCatagories(Set<Category> catagories) {

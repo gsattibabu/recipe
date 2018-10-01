@@ -1,7 +1,7 @@
 <dataset>
-	<RECIPE TITLE="30 Minute Chili" YIELD="6" />
-	<RECIPE TITLE="Amaretto Cake" YIELD="1" />
-	<RECIPE TITLE="Another Zucchini Dish" YIELD="6" />
+	<RECIPE TITLE="30 Minute Chili" YIELD="6" COOKING_TIME="30 minutes"/>
+	<RECIPE TITLE="Amaretto Cake" YIELD="1" COOKING_TIME="2 hour"/>
+	<RECIPE TITLE="Another Zucchini Dish" YIELD="6" COOKING_TIME="1 hour"/>
 
 	<RECIPE_CATEGORY ID="1" DESCRIPTION="Main dish" />
 	<RECIPE_CATEGORY ID="2" DESCRIPTION="Chili" />

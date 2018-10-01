@@ -115,6 +115,7 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 			
 			newRecipe.setRecipeTitle(recipe.getRecipeTitle());
 			newRecipe.setRecipeYield(recipe.getRecipeYield());
+			newRecipe.setCookingTime(recipe.getCookingTime());
 			
 			return recepiDao.save(newRecipe);
 		}catch(HibernateException e) {
