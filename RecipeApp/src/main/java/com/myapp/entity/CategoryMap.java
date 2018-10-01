@@ -34,7 +34,7 @@ public class CategoryMap implements AppEntity{
 	private Recipe recipes;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "CATOGORY_ID", nullable = false)
+	@JoinColumn(name = "RECIPE_CATEGORY_ID", nullable = false)
 	private Category catagories;
 	
 	public Recipe getRecipe() {

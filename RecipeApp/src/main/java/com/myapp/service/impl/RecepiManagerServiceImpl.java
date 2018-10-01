@@ -8,17 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.HibernateException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.myapp.dao.IngredientDao;
-import com.myapp.dao.IngredientDivDao;
 import com.myapp.dao.RecipeDao;
-import com.myapp.dao.RecipeStepDao;
 import com.myapp.entity.Category;
-import com.myapp.entity.Ingredient;
 import com.myapp.entity.IngredientDiv;
 import com.myapp.entity.Recipe;
 import com.myapp.entity.RecipeStep;
@@ -39,15 +36,6 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 	
 	@Autowired
 	private RecipeDao recepiDao;
-	
-	@Autowired
-	private IngredientDao ingredientDao;
-	
-	@Autowired
-	private IngredientDivDao ingredientDivDao;
-	
-	@Autowired
-	private RecipeStepDao recipeStepDao;
 	
 	@Autowired
 	private RecipeManagerUtil recipeManagerUtil;
@@ -82,26 +70,42 @@ public class RecepiManagerServiceImpl implements RecipeManagerService{
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = AppServiceException.class)
-	public Recipe createNewRecepi(Recipe recipe) throws AppServiceException {
+	public Recipe createNewRecepi(Recipe recipe) throws AppServiceException, ResourceException {
 		try {
-			Set<Category> validatedCategories = new HashSet<>();
-			Set<Category> categories = recipe.getCatagories();
-			for(Category categorie : categories) {
-				validatedCategories.add(recipeManagerUtil.validateCategory(categorie.getDescription()));
+			
+			Recipe newRecipe = saveRecipe(recipe);
+			if(null!=newRecipe) {
+				Set<Category> categories = recipe.getCatagories();
+				for(Category categorie : categories) {
+					recipeManagerUtil.validateCategory(categorie.getDescription(), newRecipe);
+				}
+				Set<RecipeStep> steps = recipe.getDirections();
+				for(RecipeStep step : steps) {
+					recipeManagerUtil.validateSteps(step, newRecipe);
+				}
+				Set<IngredientDiv> divs = recipe.getIngrediants();
+				for(IngredientDiv div : divs) {
+					recipeManagerUtil.validateIngreditants(div, newRecipe);
+				}
 			}
-			/*recipe.getCatagories().clear();
-			recipe.setCatagories(validatedCategories);*/
-			Set<RecipeStep> steps = recipe.getDirections();
-			for(RecipeStep step : steps) {
-				step.setRecipeTitle(recipe.getRecipeTitle());
-			}
-			Set<IngredientDiv> divs = recipe.getIngrediants();
-			for(IngredientDiv div : divs) {
-				div.setRecipeTitle(recipe.getRecipeTitle());
-			}
-			return recepiDao.save(recipe);
+			return newRecipe;
+		}catch(HibernateException ex) {
+			throw new AppServiceException("Unexpected Error", ex.getCause().getMessage());
+		}catch (ResourceException ex) {
+			throw ex;
+		}
+	}
+
+	private Recipe saveRecipe(Recipe recipe) throws ResourceException {
+		try {
+			Recipe newRecipe = new Recipe();
+			
+			newRecipe.setRecipeTitle(recipe.getRecipeTitle());
+			newRecipe.setRecipeYield(recipe.getRecipeYield());
+			
+			return recepiDao.save(newRecipe);
 		}catch(HibernateException e) {
-			throw new AppServiceException("Unexpected Error","Error while saving recipe");
+			throw new ResourceException("Unexpected Error",e.getCause().getMessage());
 		}
 	}
 }

@@ -67,16 +67,16 @@ public class RecepiManagerController {
 	 * 
 	 * @param recipe
 	 * @return
-	 * @throws AppServiceException
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "recipes", method = RequestMethod.POST, headers = "Accept=application/json", produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(HttpStatus.OK)
-	public Recipe createNewRecipe(@Valid @RequestBody Recipe recipe) throws AppServiceException {
+	public Recipe createNewRecipe(@Valid @RequestBody Recipe recipe) throws ResourceException, AppServiceException {
 		
 		try {
 			return recepiManagerService.createNewRecepi(recipe);
-		} catch (AppServiceException ex) {
+		} catch (AppServiceException | ResourceException ex) {
 			throw ex;
 		}
 		

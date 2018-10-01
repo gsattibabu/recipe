@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -31,19 +32,21 @@ public class Recipe implements AppEntity{
 	private static final long serialVersionUID = -4335392502086254701L;
 	
 	@Id
-	@Column(name="RECIPE_TITLE")
+	@Column(name="TITLE")
 	@NotNull
+	@Size(min=1, message="Recipe title cannot be empty")
 	private String recipeTitle;
 	
-	@Column(name="RECIPE_YIELD")
+	@Column(name="YIELD")
 	@NotNull
+	@Size(min=1, message="Recipe yield cannot be empty")
 	private String recipeYield;
 	
 	@ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
         name = "RECIPE_CATEGORY_MAP", 
         joinColumns = { @JoinColumn(name = "RECIPE_TITLE") }, 
-        inverseJoinColumns = { @JoinColumn(name = "CATOGORY_ID") }
+        inverseJoinColumns = { @JoinColumn(name = "RECIPE_CATEGORY_ID") }
     )
     private Set<Category> catagories= new HashSet<>();
 	

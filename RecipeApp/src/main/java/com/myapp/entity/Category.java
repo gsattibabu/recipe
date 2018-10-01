@@ -29,8 +29,8 @@ public class Category implements AppEntity{
 	private static final long serialVersionUID = -4335392502086254701L;
 	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="CATOGORY_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY )
+	@Column(name="ID")
 	private Long catogoryId;
 	
 	@ManyToMany(mappedBy = "catagories")

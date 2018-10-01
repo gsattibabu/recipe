@@ -40,7 +40,8 @@ public interface RecipeManagerService{
 	 * @param recipe to be saved
 	 * @return the newly created recipe
 	 * @throws AppServiceException wrapper exception for service errors
+	 * @throws ResourceException 
 	 */
-	public Recipe createNewRecepi(Recipe recipe) throws AppServiceException;
+	public Recipe createNewRecepi(Recipe recipe) throws AppServiceException, ResourceException;
 	
 }

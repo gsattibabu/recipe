@@ -8,39 +8,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.myapp.config.ApplicationConfig;
 import com.myapp.controller.CategoryManagerController;
-import com.myapp.controller.RecepiManagerController;
-import com.myapp.entity.Category;
-import com.myapp.entity.CategoryMap;
-import com.myapp.entity.Recipe;
 import com.myapp.exception.handler.AppExceptionHandler;
+import com.myapp.test.config.TestConfig;
 
 /**
  * @author Madhusudan
  *
  */
-@WebAppConfiguration
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes= {ApplicationConfig.class})
-@DataJpaTest
-@AutoConfigureTestDatabase
-public class TestCategoryManagerController {
+public class TestCategoryManagerController extends TestConfig{
 
 	private MockMvc mvc;
-
-	@Autowired
-	private TestEntityManager entityManager;
 
 	@Autowired
 	private CategoryManagerController categoryManagerController;
@@ -55,30 +39,15 @@ public class TestCategoryManagerController {
 	@Test
 	public void getCategory_success() throws Exception {
 
-		Category category = new Category();
-		category.setDescription("test description");
-		entityManager.persist(category);
-		entityManager.flush();
+		persistRecipe("Test Recipe","2","Test Category");
 		mvc.perform(get("/categories").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
 
 	@Test
 	public void getRecipesByTitle_failure() throws Exception {
 
-		Category category = new Category();
-		category.setDescription("test description");
-		entityManager.persistAndFlush(category);
+		persistRecipe("Test Recipe","2","Test Category");
 		
-		Recipe recipe = new Recipe();
-		recipe.setRecipeTitle("Test Recipe");
-		recipe.setRecipeYield("2");
-		entityManager.persistAndFlush(recipe);
-		
-		CategoryMap categoryMap = new CategoryMap();
-		categoryMap.setCatagories(category);
-		categoryMap.setRecipes(recipe);
-		entityManager.persistAndFlush(categoryMap);
-		
-		mvc.perform(get("/categories/test description").contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError());
+		mvc.perform(get("/categories/Test Category").contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError());
 	}
 }
