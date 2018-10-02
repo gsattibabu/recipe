@@ -122,5 +122,35 @@ public class TestRecipeManagerController extends TestConfig {
 				.andExpect(status().is4xxClientError())
 				.andExpect(jsonPath("message", is("Input recipe validation failed")));
 	}
+	
+	/**
+	 * Test to check error response if recipe title is not present in requested
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void createRecipes_failure() throws Exception {
+
+		String createRecipeRequest = "{\"recipeYield\": \"2\",\"cookingTime\": \"test\",\"catagories\": [{\"catogoryId\": 1,\"description\": \"Main dish\"}],\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
+
+		mvc.perform(post("/recipes").contentType(MediaType.APPLICATION_JSON).content(createRecipeRequest))
+				.andExpect(status().is4xxClientError())
+				.andExpect(jsonPath("details", is("[recipeTitle: must not be null]")));
+	}
+	
+	/**
+	 * Test to check error response if recipe yield is empty in request
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void createRecipesWithoutYield_failure() throws Exception {
+
+		String createRecipeRequest = "{\"recipeTitle\": \"Test Recipe\",\"recipeYield\": \"\",\"cookingTime\": \"test\",\"catagories\": [{\"catogoryId\": 1,\"description\": \"Main dish\"}],\"ingrediants\": [{\"title\": \"\",\"ingrediant\": [{\"item\": \"Ground chuck or lean ground; beef\",\"quantity\": \"1\",\"unit\": \"pound\"}]}],\"directions\": [{\"stepDetails\": \"test description\"}]}";
+
+		mvc.perform(post("/recipes").contentType(MediaType.APPLICATION_JSON).content(createRecipeRequest))
+				.andExpect(status().is4xxClientError())
+				.andExpect(jsonPath("details", is("[recipeYield: Recipe yield cannot be empty]")));
+	}
 
 }
